@@ -28,7 +28,7 @@ import Icon from "@mui/material/Icon";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
-function BackgroundBlogCard({ image, title, description, action }) {
+function BackgroundBlogCard({ image, title, description, action, secondAction }) {
   const cardActionStyles = {
     display: "flex",
     alignItems: "center",
@@ -70,18 +70,20 @@ function BackgroundBlogCard({ image, title, description, action }) {
           <MKTypography variant="body2" color="white" my={3}>
             {description}
           </MKTypography>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           {action.type === "internal" ? (
             <MKTypography
               component={Link}
-              to={action.route}
+              // to={action.route}
               variant="body2"
               fontWeight="regular"
               color="white"
               textTransform="capitalize"
               sx={cardActionStyles}
+              onClick={action.onClickReserveTicket}
             >
               {action.label}
-              <Icon sx={{ fontWeight: "bold" }}>arrow_forward</Icon>
+              {/* <Icon sx={{ fontWeight: "bold" }}>arrow_forward</Icon> */}
             </MKTypography>
           ) : (
             <MKTypography
@@ -99,6 +101,20 @@ function BackgroundBlogCard({ image, title, description, action }) {
               <Icon sx={{ fontWeight: "bold" }}>arrow_forward</Icon>
             </MKTypography>
           )}
+            <MKTypography
+              component={Link}
+              // to={secondAction.route}
+              variant="body2"
+              fontWeight="regular"
+              color="white"
+              textTransform="capitalize"
+              sx={cardActionStyles}
+              
+              onClick={secondAction.onClickBookmarkTicket}
+            >
+              {secondAction.label}
+            </MKTypography>
+            </div>
         </MKBox>
       </MKBox>
     </Card>
@@ -115,6 +131,11 @@ BackgroundBlogCard.propTypes = {
     route: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
   }).isRequired,
+  secondAction: PropTypes.shape({
+    type: PropTypes.oneOf(["external", "internal"]),
+    route: PropTypes.string,
+    label: PropTypes.string,
+  }),
 };
 
 export default BackgroundBlogCard;
