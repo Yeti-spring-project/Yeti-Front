@@ -107,7 +107,7 @@ function AboutUs() {
       >
         {/* <Information /> */}
         <Team />
-        <Featuring />
+        {/* <Featuring /> */}
 
       </Card>
       <MKBox pt={6} px={1} mt={6}>
