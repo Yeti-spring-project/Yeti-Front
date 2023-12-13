@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 // @mui material components
@@ -30,6 +31,7 @@ function SignUp() {
     phoneNumber: '',
     address: '',
   });
+  const history = useNavigate();
   
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -46,6 +48,8 @@ function SignUp() {
 
       // 성공적으로 응답 받으면 여기에서 처리
       console.log('서버 응답:', response.data);
+      
+      history('/signin');
     } catch (error) {
       // 오류 발생 시 여기에서 처리
       console.error('서버 요청 오류:', error);

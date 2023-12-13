@@ -1,19 +1,6 @@
-/**
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 // react-router-dom components
 import { Link } from "react-router-dom";
@@ -47,19 +34,74 @@ import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
 function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false);
-
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  });
+  const history = useNavigate();
+  
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+  
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    console.log("name, value ", name, value);
+    setFormData({ ...formData, [name]: value });
+  };
+  
+  // 토큰을 로컬 스토리지에 저장하는 함수
+  const saveTokenToLocalStorage = (token) => {
+    localStorage.setItem('Authorization', token);
+  };
+  
+  // 로컬 스토리지에서 토큰을 가져오는 함수
+  const getTokenFromLocalStorage = () => {
+    return localStorage.getItem('Authorization');
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log("handleSubmit : ", formData);
+    try {
+      // Axios를 사용하여 백엔드 서버로 POST 요청 보내기
+      const response = await axios.post('http://localhost:8080/api/user/signin', formData);
+
+      // 성공적으로 응답 받으면 여기에서 처리
+      console.log('서버 응답:', response.data);
+      
+      // 토큰을 로컬 스토리지에 저장
+      saveTokenToLocalStorage(response.data);
+      
+      // history('/');
+    } catch (error) {
+      // 오류 발생 시 여기에서 처리
+      console.error('서버 요청 오류:', error);
+    }
+    
+    // 알림 get(SSE 서버)
+    try {
+      const config = {
+        headers: {
+          Authorization: `${getTokenFromLocalStorage()}`,
+        },
+      };
+      console.log(config)
+      // Axios를 사용하여 백엔드 서버로 POST 요청 보내기
+      const response = await axios.get('http://localhost:8080/api/sports/subscribe', config);
+
+      // 성공적으로 응답 받으면 여기에서 처리
+      console.log('서버 응답:', response.data);
+            
+      history('/');
+    } catch (error) {
+      // 오류 발생 시 여기에서 처리
+      console.error('서버 요청 오류:', error);
+    }
+  };  
 
   return (
     <>
       <DefaultNavbar
         routes={routes}
-        action={{
-          type: "external",
-          route: "https://www.creative-tim.com/product/material-kit-react",
-          label: "free download",
-          color: "info",
-        }}
         transparent
         light
       />
@@ -99,34 +141,18 @@ function SignInBasic() {
                 <MKTypography variant="h4" fontWeight="medium" color="white" mt={1}>
                   Sign in
                 </MKTypography>
-                <Grid container spacing={3} justifyContent="center" sx={{ mt: 1, mb: 2 }}>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <FacebookIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <GitHubIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <MKTypography component={MuiLink} href="#" variant="body1" color="white">
-                      <GoogleIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                </Grid>
+                
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
                   <MKBox mb={2}>
-                    <MKInput type="email" label="Email" fullWidth />
+                    <MKInput label="username" name="username" fullWidth value={formData.username} onChange={handleChange}/>
                   </MKBox>
                   <MKBox mb={2}>
-                    <MKInput type="password" label="Password" fullWidth />
+                    <MKInput type="password" label="Password" name="password" fullWidth value={formData.password} onChange={handleChange}/>
                   </MKBox>
                   <MKBox display="flex" alignItems="center" ml={-1}>
-                    <Switch checked={rememberMe} onChange={handleSetRememberMe} />
+                    {/* <Switch checked={rememberMe} onChange={handleSetRememberMe} /> */}
                     <MKTypography
                       variant="button"
                       fontWeight="regular"
@@ -134,11 +160,11 @@ function SignInBasic() {
                       onClick={handleSetRememberMe}
                       sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
                     >
-                      &nbsp;&nbsp;Remember me
+                      {/* &nbsp;&nbsp;Remember me */}
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="info" fullWidth>
+                    <MKButton variant="gradient" color="info" fullWidth onClick={handleSubmit}>
                       sign in
                     </MKButton>
                   </MKBox>
