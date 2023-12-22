@@ -1,0 +1,9 @@
+{
+	"redirects": [
+	  {
+		"source": "/api/:path*",
+		"destination": "https://your-secure-api-endpoint/:path*",
+		"permanent": true
+	  }
+	]
+  }
