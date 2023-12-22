@@ -2,7 +2,7 @@
 	"redirects": [
 	  {
 		"source": "/api/:path*",
-		"destination": "https://13.209.247.218/:path*",
+		"destination": "http://13.209.247.218/:path*",
 		"permanent": true
 	  }
 	]
