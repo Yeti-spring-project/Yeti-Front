@@ -21,7 +21,7 @@ function Places() {
   useEffect(() => {
     const getTicketInfoList = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/tickets");
+        const response = await axios.get("http://13.209.247.218/api/tickets");
         console.log(response.data.data);
         
         setTicketInfoList(response.data.data);
@@ -58,7 +58,7 @@ function Places() {
     }
     
     try{
-      const response = await axios.post("http://localhost:8080/api/mytickets/reserve", ticketData, config);
+      const response = await axios.post("http://13.209.247.218/api/mytickets/reserve", ticketData, config);
       console.log("예매 : ", response);
     } catch(error) {
       console.log("error : ", error);
@@ -69,7 +69,7 @@ function Places() {
   const handleBookmarkTicket = async (id) => {
 
     try{
-      const response = await axios.post(`http://localhost:8080/api/sports/bookmarks?ticketinfoid=${id}`, "", config);
+      const response = await axios.post(`http://13.209.247.218/api/sports/bookmarks?ticketinfoid=${id}`, "", config);
       console.log("찜 : ", response);
     } catch(error) {
       console.log("error : ", error);

@@ -63,7 +63,7 @@ function SignInBasic() {
     console.log("handleSubmit : ", formData);
     try {
       // Axios를 사용하여 백엔드 서버로 POST 요청 보내기
-      const response = await axios.post('http://localhost:8080/api/user/signin', formData);
+      const response = await axios.post('http://13.209.247.218/api/user/signin', formData);
 
       // 성공적으로 응답 받으면 여기에서 처리
       console.log('서버 응답:', response.data);
@@ -72,18 +72,18 @@ function SignInBasic() {
       saveTokenToLocalStorage(response.data);
             
       // 알림 get(SSE 서버)
-      const config = {
-        headers: {
-          Authorization: `${getTokenFromLocalStorage()}`,
-        },
-      };
+      // const config = {
+      //   headers: {
+      //     Authorization: `${getTokenFromLocalStorage()}`,
+      //   },
+      // };
 
-      // Axios를 사용하여 백엔드 서버로 GET 요청 보내기
-      axios.get('http://localhost:8080/api/sports/subscribe', config)
-        .catch((error) => {
-          // 오류 발생 시 여기에서 처리
-          console.error('서버 요청 오류:', error);
-        });
+      // // Axios를 사용하여 백엔드 서버로 GET 요청 보내기
+      // axios.get('http://13.209.247.218/api/sports/subscribe', config)
+      //   .catch((error) => {
+      //     // 오류 발생 시 여기에서 처리
+      //     console.error('서버 요청 오류:', error);
+      //   });
     } catch (error) {
       // 오류 발생 시 여기에서 처리
       console.error('서버 요청 오류:', error);
