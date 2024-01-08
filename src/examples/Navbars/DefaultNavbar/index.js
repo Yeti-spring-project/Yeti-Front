@@ -44,6 +44,8 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 import breakpoints from "assets/theme/base/breakpoints";
 import InputAdornment from '@mui/material/InputAdornment';
 
+import axios from 'axios';
+
 function DefaultNavbar({ brand, routes, transparent, light, action, sticky, relative, center }) {
   const [dropdown, setDropdown] = useState("");
   const [dropdownEl, setDropdownEl] = useState("");
@@ -55,12 +57,23 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
   const [mobileNavbar, setMobileNavbar] = useState(false);
   const [mobileView, setMobileView] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  const [searchTicketInfoList, setSearchTicketInfoList] = useState();
 
   const handleSearch = () => {
-    // 검색을 수행하는 로직을 여기에 추가
+    // 검색
     console.log('Performing search for:', searchValue);
-    
-    
+    const api = `api/search?queryText=${searchValue}&pageNumber=0&pageSize=5`
+    const getSearchTicketInfoList = async () => {
+      try {
+        const response = await axios.get("https://yetiyt.shop/" + api);
+        console.log(response.data.data);
+        
+        setSearchTicketInfoList(response.data.data);
+      } catch(error) {
+        console.log("error : ", error);
+      }
+    }
+    getSearchTicketInfoList();
   };
 
 
