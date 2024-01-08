@@ -14,6 +14,7 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 import { Fragment, useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 // react-router components
 import { Link } from "react-router-dom";
@@ -58,17 +59,20 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
   const [mobileView, setMobileView] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [searchTicketInfoList, setSearchTicketInfoList] = useState();
+  
+  const history = useNavigate();
 
   const handleSearch = () => {
     // 검색
     console.log('Performing search for:', searchValue);
-    const api = `api/search?queryText=${searchValue}&pageNumber=0&pageSize=5`
+    const api = `api/search?queryText=${searchValue}&pageNumber=0&pageSize=5`;
     const getSearchTicketInfoList = async () => {
       try {
         const response = await axios.get("https://yetiyt.shop/" + api);
         console.log(response.data.data);
         
         setSearchTicketInfoList(response.data.data);
+        history('/search', { searchResult: response.data.results });
       } catch(error) {
         console.log("error : ", error);
       }

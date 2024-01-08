@@ -15,10 +15,10 @@ import SignUp from 'pages/LandingPages/SignUp';
 import SignInPage from 'layouts/pages/authentication/sign-in';
 import AboutUsPage from 'layouts/pages/landing-pages/about-us';
 import ContactUsPage from 'layouts/pages/landing-pages/contact-us';
+import SearchPosts from 'pages/LandingPages/Author/sections/SearchPosts';
 
 export default function App() {
   const { pathname } = useLocation();
-  const [isLoggedIn, setLoggedIn] = useState(false);
 
   // Setting page scroll to 0 when changing the route
   useEffect(() => {
@@ -45,6 +45,7 @@ export default function App() {
       <Routes>
         {getRoutes(routes)}
         <Route path="/presentation" element={<Presentation />} />
+        <Route path="/search" element={<SearchPosts />} />
       </Routes>
     </ThemeProvider>
   );
