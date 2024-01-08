@@ -123,14 +123,14 @@ function BackgroundBlogCard({ image, title, description, action, secondAction })
 
 // Typechecking props for the BackgroundBlogCard
 BackgroundBlogCard.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  image: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
   action: PropTypes.shape({
-    type: PropTypes.oneOf(["external", "internal"]).isRequired,
-    route: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-  }).isRequired,
+    type: PropTypes.oneOf(["external", "internal"]),
+    route: PropTypes.string,
+    label: PropTypes.string,
+  }),
   secondAction: PropTypes.shape({
     type: PropTypes.oneOf(["external", "internal"]),
     route: PropTypes.string,

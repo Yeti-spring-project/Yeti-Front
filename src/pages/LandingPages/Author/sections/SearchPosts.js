@@ -43,6 +43,14 @@ function SearchPosts() {
               <br/>
             </div>
           }
+          action={{
+            type: "internal",
+            label: "",
+          }}
+          secondAction={{
+            type: "internal",
+            label: "",
+          }}
         />
       </Grid>
     ));
