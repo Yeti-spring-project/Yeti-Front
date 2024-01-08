@@ -25,6 +25,7 @@ function SearchPosts() {
     if (searchResults) {
       setSearchResult(searchResults);
     }
+    console.log("searchResults : ", searchResults);
   }, [searchResults]);
   
         
