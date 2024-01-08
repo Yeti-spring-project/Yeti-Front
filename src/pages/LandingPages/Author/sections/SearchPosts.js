@@ -20,6 +20,7 @@ function SearchPosts() {
   const [searchResult, setSearchResult] = useState();
   const location = useLocation();
   const searchResults = location.state?.searchResult;
+  console.log("넘어온 값 : ", searchResults);
   
   useEffect(() => {
     if (searchResults) {
