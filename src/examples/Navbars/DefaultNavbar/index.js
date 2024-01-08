@@ -13,7 +13,6 @@ Coded by www.creative-tim.com
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
-
 import { Fragment, useState, useEffect } from "react";
 
 // react-router components
@@ -35,6 +34,7 @@ import MuiLink from "@mui/material/Link";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import MKButton from "components/MKButton";
+import MKInput from 'components/MKInput';
 
 // Material Kit 2 React example components
 import DefaultNavbarDropdown from "examples/Navbars/DefaultNavbar/DefaultNavbarDropdown";
@@ -42,6 +42,7 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 
 // Material Kit 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
+import InputAdornment from '@mui/material/InputAdornment';
 
 function DefaultNavbar({ brand, routes, transparent, light, action, sticky, relative, center }) {
   const [dropdown, setDropdown] = useState("");
@@ -53,6 +54,15 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
   const [arrowRef, setArrowRef] = useState(null);
   const [mobileNavbar, setMobileNavbar] = useState(false);
   const [mobileView, setMobileView] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSearch = () => {
+    // 검색을 수행하는 로직을 여기에 추가
+    console.log('Performing search for:', searchValue);
+    
+    
+  };
+
 
   const openMobileNavbar = () => setMobileNavbar(!mobileNavbar);
 
@@ -505,21 +515,19 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
                   {action.label}
                 </MKButton>
               ) : (
-                <MKButton
-                  component="a"
-                  href={action.route}
-                  target="_blank"
-                  rel="noreferrer"
-                  variant={
-                    action.color === "white" || action.color === "default"
-                      ? "contained"
-                      : "gradient"
-                  }
-                  color={action.color ? action.color : "info"}
-                  size="small"
-                >
-                  {action.label}
-                </MKButton>
+                <MKBox display="flex" alignItems="center">
+                  <MKInput
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    placeholder="Search"
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        handleSearch(); // 검색을 실행하는 함수 호출
+                      }
+                    }}
+                  />
+                  
+                </MKBox>
               ))}
           </MKBox>
           <MKBox
@@ -534,13 +542,18 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
             <Icon fontSize="default">{mobileNavbar ? "close" : "menu"}</Icon>
           </MKBox>
         </MKBox>
+        
         <MKBox
+          display="flex"
+          alignItems="center"
           bgColor={transparent ? "white" : "transparent"}
           shadow={transparent ? "lg" : "none"}
           borderRadius="xl"
           px={transparent ? 2 : 0}
         >
-          {mobileView && <DefaultNavbarMobile routes={routes} open={mobileNavbar} />}
+          
+            {mobileView && <DefaultNavbarMobile routes={routes} open={mobileNavbar} />}
+
         </MKBox>
       </MKBox>
       {dropdownMenu}

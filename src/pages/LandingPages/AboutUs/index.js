@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -7,6 +9,7 @@ import Card from "@mui/material/Card";
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import MKButton from "components/MKButton";
+import MKInput from 'components/MKInput';
 
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
@@ -24,6 +27,8 @@ import footerRoutes from "footer.routes";
 // Images
 import bgImage from "assets/images/bg-about-us.jpg";
 
+import InputIcon from 'layouts/sections/input-areas/inputs/components/InputIcon';
+
 function AboutUs() {
   
   const routes = RouteList();
@@ -33,6 +38,9 @@ function AboutUs() {
       <MKBox position="fixed" top="0.5rem" width="100%">
         <DefaultNavbar
           routes={routes}
+          action={{
+            type: "custom"
+          }}
         />
       </MKBox>
       <MKBox

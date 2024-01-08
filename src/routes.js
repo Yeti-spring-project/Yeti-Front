@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import SignUp from 'pages/LandingPages/SignUp';
 import SignInPage from 'layouts/pages/authentication/sign-in';
 import AboutUsPage from 'layouts/pages/landing-pages/about-us';
-import { common } from '@mui/material/colors';
 
 const RouteList = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
