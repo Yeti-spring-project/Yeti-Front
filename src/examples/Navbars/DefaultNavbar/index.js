@@ -72,7 +72,7 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
         console.log(response.data.data);
         
         setSearchTicketInfoList(response.data.data);
-        history('/search', { searchResult: response.data.results });
+        history('/search', { state: {searchResult: response.data.results }});
       } catch(error) {
         console.log("error : ", error);
       }
