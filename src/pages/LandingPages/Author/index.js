@@ -33,6 +33,7 @@ import RouteList from "routes";
 
 // Images
 import bgImage from "assets/images/city-profile.jpg";
+import SearchPosts from './sections/SearchPosts';
 
 function Author() {
   const routes = RouteList();
@@ -78,6 +79,7 @@ function Author() {
         >
           <Profile />
           <Posts />
+          <SearchPosts />
         </Card>
         <Contact />
         <Footer />

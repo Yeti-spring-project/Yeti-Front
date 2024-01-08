@@ -18,6 +18,7 @@ import DefaultFooter from "examples/Footers/DefaultFooter";
 // About Us page sections
 import Information from "pages/LandingPages/AboutUs/sections/Information";
 import Team from "pages/LandingPages/AboutUs/sections/Team";
+import TeamSearch from "pages/LandingPages/AboutUs/sections/TeamSearch";
 import Featuring from "pages/LandingPages/AboutUs/sections/Featuring";
 
 // Routes

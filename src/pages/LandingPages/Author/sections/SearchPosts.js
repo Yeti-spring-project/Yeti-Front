@@ -19,10 +19,12 @@ import post4 from "assets/images/examples/blog2.jpg";
 function SearchPosts() {
   const [searchResult, setSearchResult] = useState();
   const location = useLocation();
-  const { searchResults } = location.state;
+  const searchResults = location.state?.searchResults;
   
   useEffect(() => {
-    setSearchResult(searchResults);
+    if (searchResults) {
+      setSearchResult(searchResults);
+    }
   }, [searchResults]);
   
         

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import SignUp from 'pages/LandingPages/SignUp';
 import SignInPage from 'layouts/pages/authentication/sign-in';
 import AboutUsPage from 'layouts/pages/landing-pages/about-us';
-import SearchPosts from 'pages/LandingPages/Author/sections/SearchPosts';
+import SearchPostsPage from 'layouts/pages/landing-pages/about-us/search';
 
 const RouteList = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -19,7 +19,8 @@ const RouteList = () => {
       {
         name: "",
         route: "/search",
-        component: <SearchPosts />,
+        component: <SearchPostsPage />,
+        key: "search",
       },
       {
         name: "home",
