@@ -45,7 +45,7 @@ export default function App() {
       <Routes>
         {getRoutes(routes)}
         <Route path="/presentation" element={<Presentation />} />
-        <Route path="/search" element={<SearchPosts />} />
+        {/* <Route path="/search" element={<SearchPosts />} /> */}
       </Routes>
     </ThemeProvider>
   );

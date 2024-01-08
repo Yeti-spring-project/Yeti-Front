@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import SignUp from 'pages/LandingPages/SignUp';
 import SignInPage from 'layouts/pages/authentication/sign-in';
 import AboutUsPage from 'layouts/pages/landing-pages/about-us';
+import SearchPosts from 'pages/LandingPages/Author/sections/SearchPosts';
 
 const RouteList = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -15,6 +16,11 @@ const RouteList = () => {
 
   const getRoutes = (isLoggedIn) => {
     const commonRoutes = [
+      {
+        name: "",
+        route: "/search",
+        component: <SearchPosts />,
+      },
       {
         name: "home",
         route: "/",
