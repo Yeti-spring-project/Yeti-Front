@@ -10,8 +10,10 @@ import theme from "assets/theme";
 import Presentation from "layouts/pages/presentation";
 
 // Material Kit 2 React routes
-import routes from "routes";
+// import Routes from "routes";
+import SignUp from 'pages/LandingPages/SignUp';
 import SignInPage from 'layouts/pages/authentication/sign-in';
+import AboutUsPage from 'layouts/pages/landing-pages/about-us';
 import ContactUsPage from 'layouts/pages/landing-pages/contact-us';
 
 export default function App() {
@@ -26,6 +28,39 @@ export default function App() {
     const token = localStorage.getItem('Authorization');
     setLoggedIn(!!token);
   }, [pathname]);
+  
+  const routes = [
+    {
+      name: "home",
+      route: "/",
+      component: <AboutUsPage />,
+      key: "home",
+    },
+    ...(isLoggedIn
+      ? [
+          {
+            name: "logout",
+            route: "/logout",
+            component: null, // 로그아웃 페이지 컴포넌트는 null 또는 특정 컴포넌트로 설정
+            key: "logout"
+          }
+        ]
+      : [
+          {
+            name: "signup",
+            route: "/signup",
+            component: <SignUp />,
+            key: "signup"
+          }
+        ]
+    ),
+    {
+      name: "signin",
+      route: "/signin",
+      component: <SignInPage />,
+      key: "signin"
+    },
+  ];
   
   const handleLogout = () => {
     // 로그아웃 처리 로직
@@ -52,19 +87,6 @@ export default function App() {
       <Routes>
         {getRoutes(routes)}
         <Route path="/presentation" element={<Presentation />} />
-        {isLoggedIn ? (
-          <Route color="inherit" component={Link} to="/logout" onClick={handleLogout}>
-            Logout
-          </Route>
-        ) : (
-          <>
-            <Route path="/signin" element={<SignInPage />} />
-            <Route path="/signup" element={<ContactUsPage />} />
-          </>
-        )}
-        {/* <Route path="/signin" element={<SignInPage />} />
-        <Route path="/signup" element={<ContactUsPage />} /> */}
-        {/* <Route path="*" element={<Navigate to="/presentation" />} /> */}
       </Routes>
     </ThemeProvider>
   );

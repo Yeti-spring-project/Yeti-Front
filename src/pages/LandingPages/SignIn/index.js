@@ -27,7 +27,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import SimpleFooter from "examples/Footers/SimpleFooter";
 
 // Material Kit 2 React page layout routes
-import routes from "routes";
+import Routes from "routes";
 
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
@@ -39,7 +39,7 @@ function SignInBasic() {
     password: '',
   });
   const history = useNavigate();
-  
+
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
   
   const handleChange = (event) => {
@@ -90,7 +90,8 @@ function SignInBasic() {
     }
     window.location.href = '/';
   };  
-
+  
+  const routes = Routes();
   return (
     <>
       <DefaultNavbar

@@ -29,12 +29,13 @@ import Contact from "pages/LandingPages/Author/sections/Contact";
 import Footer from "pages/LandingPages/Author/sections/Footer";
 
 // Routes
-import routes from "routes";
+import Routes from "routes";
 
 // Images
 import bgImage from "assets/images/city-profile.jpg";
 
 function Author() {
+  const routes = Routes();
   return (
     <>
       <DefaultNavbar

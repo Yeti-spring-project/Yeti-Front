@@ -16,7 +16,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Routes
-import routes from "routes";
+import Routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Image
@@ -32,7 +32,7 @@ function SignUp() {
     address: '',
   });
   const history = useNavigate();
-  
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     console.log("name, value ", name, value);
@@ -55,6 +55,7 @@ function SignUp() {
       console.error('서버 요청 오류:', error);
     }
   };
+  const routes = Routes();
   
   return (
     <>

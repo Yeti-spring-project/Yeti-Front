@@ -18,13 +18,16 @@ import Team from "pages/LandingPages/AboutUs/sections/Team";
 import Featuring from "pages/LandingPages/AboutUs/sections/Featuring";
 
 // Routes
-import routes from "routes";
+import Routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Images
 import bgImage from "assets/images/bg-about-us.jpg";
 
 function AboutUs() {
+  
+  const routes = Routes();
+  
   return (
     <>
       <MKBox position="fixed" top="0.5rem" width="100%">

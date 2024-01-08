@@ -30,9 +30,10 @@ import CenteredFooter from "examples/Footers/CenteredFooter";
 import Breadcrumbs from "examples/Breadcrumbs";
 
 // Routes
-import routes from "routes";
+import Routes from "routes";
 
 function BaseLayout({ breadcrumb, title, children }) {
+  const routes = Routes();
   return (
     <MKBox display="flex" flexDirection="column" bgColor="white" minHeight="100vh">
       <MKBox bgColor="white" shadow="sm" py={0.25}>
