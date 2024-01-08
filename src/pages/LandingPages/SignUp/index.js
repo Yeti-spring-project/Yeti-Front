@@ -16,7 +16,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
 
 // Routes
-import Routes from "routes";
+import RouteList from "routes";
 import footerRoutes from "footer.routes";
 
 // Image
@@ -55,7 +55,7 @@ function SignUp() {
       console.error('서버 요청 오류:', error);
     }
   };
-  const routes = Routes();
+  const routes = RouteList();
   
   return (
     <>

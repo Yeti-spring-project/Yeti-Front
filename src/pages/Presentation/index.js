@@ -40,14 +40,14 @@ import Download from "pages/Presentation/sections/Download";
 import BuiltByDevelopers from "pages/Presentation/components/BuiltByDevelopers";
 
 // Routes
-import Routes from "routes";
+import RouteList from "routes";
 import footerRoutes from "footer.routes";
 
 // Images
 import bgImage from "assets/images/bg-presentation.jpg";
 
 function Presentation() {
-  const routes = Routes();
+  const routes = RouteList();
   return (
     <>
       <DefaultNavbar

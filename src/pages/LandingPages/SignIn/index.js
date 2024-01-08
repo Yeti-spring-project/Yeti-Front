@@ -27,7 +27,7 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import SimpleFooter from "examples/Footers/SimpleFooter";
 
 // Material Kit 2 React page layout routes
-import Routes from "routes";
+import RouteList from "routes";
 
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
@@ -91,7 +91,7 @@ function SignInBasic() {
     window.location.href = '/';
   };  
   
-  const routes = Routes();
+  const routes = RouteList();
   return (
     <>
       <DefaultNavbar

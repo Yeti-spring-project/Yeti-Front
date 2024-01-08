@@ -5,7 +5,7 @@ import SignInPage from 'layouts/pages/authentication/sign-in';
 import AboutUsPage from 'layouts/pages/landing-pages/about-us';
 import { common } from '@mui/material/colors';
 
-const Routes = () => {
+const RouteList = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -60,4 +60,4 @@ const Routes = () => {
   return routeList;
 }
 
-export default Routes;
+export default RouteList;
