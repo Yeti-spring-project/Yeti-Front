@@ -34,7 +34,7 @@ function SearchPosts() {
       <Grid key={index} item xs={12} sm={6} lg={3}>
         <BackgroundBlogCard
           image={post4} // 이미지 경로 또는 이미지 자체를 전달
-          title={sports.sportsName}
+          title={sports.sportName}
           description={
             <div>
               <h3>{sports.stadiumName}&nbsp;&nbsp;
