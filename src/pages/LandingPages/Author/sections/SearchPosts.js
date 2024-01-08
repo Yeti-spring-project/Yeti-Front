@@ -19,19 +19,19 @@ import post4 from "assets/images/examples/blog2.jpg";
 function SearchPosts() {
   const [searchResult, setSearchResult] = useState();
   const location = useLocation();
-  const searchResults = location.state?.searchResults;
+  const searchResults = location.state?.searchResult;
   
   useEffect(() => {
     if (searchResults) {
       setSearchResult(searchResults);
     }
-    console.log("searchResults : ", searchResults);
+    console.log("searchResults : ", searchResult);
   }, [searchResults]);
   
         
   // 받아온 데이터를 사용하여 각각의 카드를 생성
   const renderTicketInfoCards = () => {
-    return searchResults.map((sports, index) => (
+    return searchResult.map((sports, index) => (
       <Grid key={index} item xs={12} sm={6} lg={3}>
         <BackgroundBlogCard
           image={post4} // 이미지 경로 또는 이미지 자체를 전달
