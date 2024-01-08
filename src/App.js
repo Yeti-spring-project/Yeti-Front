@@ -23,13 +23,13 @@ export default function App() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     // 로컬 스토리지에서 토큰을 가져와 로그인 여부를 확인
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('Authorization');
     setLoggedIn(!!token);
   }, [pathname]);
   
   const handleLogout = () => {
     // 로그아웃 처리 로직
-    localStorage.removeItem('token');
+    localStorage.removeItem('Authorization');
     setLoggedIn(false);
   };
 
