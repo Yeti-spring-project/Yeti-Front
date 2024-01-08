@@ -23,16 +23,14 @@ function SearchPosts() {
   console.log("넘어온 값 : ", searchResults);
   
   useEffect(() => {
-    if (searchResults) {
-      setSearchResult(searchResults);
-    }
+    setSearchResult(searchResults);
     console.log("searchResults : ", searchResult);
-  }, [searchResults]);
+  }, []);
   
         
   // 받아온 데이터를 사용하여 각각의 카드를 생성
   const renderTicketInfoCards = () => {
-    return searchResult.map((sports, index) => (
+    return searchResult && searchResult.map((sports, index) => (
       <Grid key={index} item xs={12} sm={6} lg={3}>
         <BackgroundBlogCard
           image={post4} // 이미지 경로 또는 이미지 자체를 전달
