@@ -23,7 +23,7 @@ function SearchPosts() {
   
   useEffect(() => {
     setSearchResult(searchResults);
-  }, []);
+  }, [searchResults]);
   
         
   // 받아온 데이터를 사용하여 각각의 카드를 생성
