@@ -39,7 +39,7 @@ const RouteList = () => {
             {
               name: "logout",
               route: "/logout",
-              component: <Logout />, // 로그아웃 페이지 컴포넌트는 null 또는 특정 컴포넌트로 설정
+              component: <Logout />, 
               key: "logout"
             }
           ]

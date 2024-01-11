@@ -7,7 +7,7 @@ const Logout = () => {
 	const handleLogout = () => {
 		// 로그아웃 처리 로직
 		localStorage.removeItem('Authorization');
-		history("/");
+		window.location.href("/");
 	};
 
 	return (
