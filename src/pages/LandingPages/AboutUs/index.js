@@ -85,9 +85,7 @@ function AboutUs() {
               {/* We&apos;re constantly trying to express ourselves and actualize our dreams. If you
               have the opportunity to play this game */}
             </MKTypography>
-            <MKButton color="default" sx={{ color: ({ palette: { dark } }) => dark.main }}>
-              {/* create account */}
-            </MKButton>
+
             <MKTypography variant="h6" color="white" mt={8} mb={1}>
               {/* Find us on */}
             </MKTypography>
