@@ -53,12 +53,12 @@ function Places() {
   const handleReserveTicket = async (id) => {
     const ticketData = {
       "ticketInfoId": id,
-      "posX": 0,
-      "posY": 0,
+      "posX": Math.random() * 100,
+      "posY": Math.random() * 1000,
     }
     
     try{
-      const response = await axios.post("https://yetiyt.shop/api/mytickets/reserve", ticketData, config);
+      const response = await axios.post("https://yetiyt.shop/api/mytickets/reserve/waiting/queue/sortedset", ticketData, config);
       console.log("예매 : ", response);
     } catch(error) {
       console.log("error : ", error);

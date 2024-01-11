@@ -4,6 +4,7 @@ import SignUp from 'pages/LandingPages/SignUp';
 import SignInPage from 'layouts/pages/authentication/sign-in';
 import AboutUsPage from 'layouts/pages/landing-pages/about-us';
 import SearchPostsPage from 'layouts/pages/landing-pages/about-us/search';
+import Logout from 'pages/LandingPages/SignIn/Logout';
 
 const RouteList = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -38,7 +39,7 @@ const RouteList = () => {
             {
               name: "logout",
               route: "/logout",
-              component: null, // 로그아웃 페이지 컴포넌트는 null 또는 특정 컴포넌트로 설정
+              component: <Logout />, // 로그아웃 페이지 컴포넌트는 null 또는 특정 컴포넌트로 설정
               key: "logout"
             }
           ]
