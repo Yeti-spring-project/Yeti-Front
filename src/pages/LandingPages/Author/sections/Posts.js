@@ -53,13 +53,21 @@ function Places() {
   const handleReserveTicket = async (id) => {
     const ticketData = {
       "ticketInfoId": id,
-      "posX": Math.random() * 100,
-      "posY": Math.random() * 1000,
+      "posX": Math.floor(Math.random() * 100),
+      "posY": Math.floor(Math.random() * 1000),
     }
     
     try{
       const response = await axios.post("https://yetiyt.shop/api/mytickets/reserve/waiting/queue/sortedset", ticketData, config);
       console.log("예매 : ", response);
+      
+      if (response.status === 200) {
+        // 예매 성공시 
+        alert("예매가 완료되었습니다!");
+      } else {
+        console.log("예매 실패 : ", response);
+      }
+      
     } catch(error) {
       console.log("error : ", error);
     }
